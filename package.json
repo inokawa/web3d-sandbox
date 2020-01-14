@@ -6,7 +6,9 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "dependencies": {},
+  "dependencies": {
+    "three": "^0.112.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@storybook/html": "^5.3.3",
