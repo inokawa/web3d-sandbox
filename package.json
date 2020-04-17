@@ -13,6 +13,6 @@
     "@babel/core": "^7.9.0",
     "@storybook/html": "^5.3.18",
     "babel-loader": "^8.1.0",
-    "raw-loader": "^4.0.0"
+    "raw-loader": "^4.0.1"
   }
 }
