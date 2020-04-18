@@ -39,10 +39,6 @@ export const Pixelate = () => {
   init(div, {
     frag: pixelate,
     uniforms: {
-      resolution: {
-        type: "v2",
-        value: new THREE.Vector2(window.innerWidth, window.innerHeight),
-      },
       fMosaicScale: { type: "f", value: 10.0 },
     },
   });
@@ -51,14 +47,6 @@ export const Pixelate = () => {
 
 export const Whitenoise = () => {
   const div = document.createElement("div");
-  init(div, {
-    frag: whitenoise,
-    uniforms: {
-      resolution: {
-        type: "v2",
-        value: new THREE.Vector2(window.innerWidth, window.innerHeight),
-      },
-    },
-  });
+  init(div, { frag: whitenoise });
   return div;
 };

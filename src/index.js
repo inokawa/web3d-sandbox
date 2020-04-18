@@ -36,6 +36,10 @@ function init(elem, { uniforms, frag, vert } = {}) {
       type: "f",
       value: 0,
     },
+    resolution: {
+      type: "v2",
+      value: new THREE.Vector2(window.innerWidth, window.innerHeight),
+    },
     ...uniforms,
   };
   const effect = new ShaderPass(
