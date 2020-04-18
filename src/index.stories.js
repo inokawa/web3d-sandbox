@@ -3,6 +3,7 @@ import monochrome from "./shaders/frag/monochrome.frag";
 import binarize from "./shaders/frag/binarize.frag";
 import invert from "./shaders/frag/invert.frag";
 import pixelate from "./shaders/frag/pixelate.frag";
+import eightbit from "./shaders/frag/eightbit.frag";
 import whitenoise from "./shaders/frag/whitenoise.frag";
 
 export default {
@@ -41,6 +42,12 @@ export const Pixelate = () => {
       fMosaicScale: { type: "f", value: 10.0 },
     },
   });
+  return div;
+};
+
+export const Eightbit = () => {
+  const div = document.createElement("div");
+  init(div, { frag: eightbit });
   return div;
 };
 
