@@ -6,7 +6,7 @@ import defaultVert from "./shaders/vert/default.vert";
 import defaultFrag from "./shaders/frag/default.frag";
 import { createManyMesh } from "./utils/mesh";
 
-function init(elem, { frag, vert } = {}) {
+function init(elem, { uniforms, frag, vert } = {}) {
   const camera = new THREE.PerspectiveCamera(
     70,
     window.innerWidth / window.innerHeight,
@@ -34,6 +34,7 @@ function init(elem, { frag, vert } = {}) {
           value: null,
           type: "t",
         },
+        ...uniforms,
       },
       vertexShader: vert || defaultVert,
       fragmentShader: frag || defaultFrag,
