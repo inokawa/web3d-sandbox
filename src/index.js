@@ -4,7 +4,7 @@ import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
 import defaultVert from "./shaders/vert/default.vert";
 import defaultFrag from "./shaders/frag/default.frag";
-import { createCubeMesh } from "./utils/mesh";
+import { createManyMesh } from "./utils/mesh";
 
 function init(elem, { frag, vert } = {}) {
   const camera = new THREE.PerspectiveCamera(
@@ -17,7 +17,7 @@ function init(elem, { frag, vert } = {}) {
 
   const scene = new THREE.Scene();
 
-  const mesh = createCubeMesh();
+  const mesh = createManyMesh();
   scene.add(mesh);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true });
