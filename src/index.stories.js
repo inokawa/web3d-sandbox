@@ -4,6 +4,7 @@ import monochrome from "./shaders/frag/monochrome.frag";
 import binarize from "./shaders/frag/binarize.frag";
 import invert from "./shaders/frag/invert.frag";
 import pixelate from "./shaders/frag/pixelate.frag";
+import whitenoise from "./shaders/frag/whitenoise.frag";
 
 export default {
   title: "Shaders",
@@ -43,6 +44,20 @@ export const Pixelate = () => {
         value: new THREE.Vector2(window.innerWidth, window.innerHeight),
       },
       fMosaicScale: { type: "f", value: 10.0 },
+    },
+  });
+  return div;
+};
+
+export const Whitenoise = () => {
+  const div = document.createElement("div");
+  init(div, {
+    frag: whitenoise,
+    uniforms: {
+      resolution: {
+        type: "v2",
+        value: new THREE.Vector2(window.innerWidth, window.innerHeight),
+      },
     },
   });
   return div;
