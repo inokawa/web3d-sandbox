@@ -11,9 +11,9 @@ function init(elem, { frag, vert } = {}) {
     70,
     window.innerWidth / window.innerHeight,
     0.01,
-    10
+    1000
   );
-  camera.position.z = 1;
+  camera.position.z = 100;
 
   const scene = new THREE.Scene();
 
