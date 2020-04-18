@@ -1,11 +1,11 @@
-import init from './index.js';
+import init from "./index.js";
 
 export default {
-  title: 'Demo',
+  title: "Shaders",
 };
 
-export const Test = () => {
-  const div = document.createElement('div');
+export const None = () => {
+  const div = document.createElement("div");
   init(div);
   return div;
 };
