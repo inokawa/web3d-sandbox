@@ -1,4 +1,3 @@
-import * as THREE from "three";
 import init from "./index.js";
 import monochrome from "./shaders/frag/monochrome.frag";
 import binarize from "./shaders/frag/binarize.frag";
