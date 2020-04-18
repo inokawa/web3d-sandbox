@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { createCubeMesh } from "./utils/mesh";
 
 function init(elem) {
   const camera = new THREE.PerspectiveCamera(
@@ -11,10 +12,7 @@ function init(elem) {
 
   const scene = new THREE.Scene();
 
-  const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
-  const material = new THREE.MeshNormalMaterial();
-
-  const mesh = new THREE.Mesh(geometry, material);
+  const mesh = createCubeMesh();
   scene.add(mesh);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true });
