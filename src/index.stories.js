@@ -1,5 +1,6 @@
 import init from "./index.js";
 import monochrome from "./shaders/frag/monochrome.frag";
+import binarize from "./shaders/frag/binarize.frag";
 import invert from "./shaders/frag/invert.frag";
 
 export default {
@@ -15,6 +16,12 @@ export const None = () => {
 export const Monochrome = () => {
   const div = document.createElement("div");
   init(div, { frag: monochrome });
+  return div;
+};
+
+export const Binarize = () => {
+  const div = document.createElement("div");
+  init(div, { frag: binarize });
   return div;
 };
 
