@@ -49,8 +49,8 @@ function init(elem, { frag, vert } = {}) {
   function animate() {
     requestAnimationFrame(animate);
 
-    mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.02;
+    mesh.rotation.x += 0.0025;
+    mesh.rotation.y += 0.005;
 
     composer.render();
   }
