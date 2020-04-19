@@ -6,7 +6,7 @@ import edgeSobel from "./shaders/frag/edgeSobel.frag";
 import blur from "./shaders/frag/blur.frag";
 import swirl from "./shaders/frag/swirl.frag";
 import pixelate from "./shaders/frag/pixelate.frag";
-import eightbit from "./shaders/frag/eightbit.frag";
+import posterize from "./shaders/frag/posterize.frag";
 import whitenoise from "./shaders/frag/whitenoise.frag";
 
 export default {
@@ -77,9 +77,15 @@ export const Pixelate = () => {
   return div;
 };
 
-export const Eightbit = () => {
+export const Posterize = () => {
   const div = document.createElement("div");
-  init(div, { frag: eightbit });
+  init(div, {
+    frag: posterize,
+    uniforms: {
+      gamma: { type: "f", value: 0.6 },
+      numColors: { type: "f", value: 8.0 },
+    },
+  });
   return div;
 };
 
