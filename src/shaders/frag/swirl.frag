@@ -2,11 +2,11 @@ uniform sampler2D tDiffuse;
 varying vec2 vUv;
 uniform vec2 resolution;
 
-uniform vec2 center;
 uniform float radius;
 uniform float strength;
 
 void main() {
+  vec2 center = vec2(resolution.x / 2.0, resolution.y / 2.0);
   vec2 pos = (vUv * resolution) - center;
   float len = length(pos);
   if(len >= radius) {

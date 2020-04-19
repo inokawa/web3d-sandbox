@@ -1,4 +1,3 @@
-import * as THREE from "three";
 import init from "./utils/threejs.js";
 import monochrome from "./shaders/frag/monochrome.frag";
 import binarize from "./shaders/frag/binarize.frag";
@@ -41,10 +40,6 @@ export const Swirl = () => {
   init(div, {
     frag: swirl,
     uniforms: {
-      center: {
-        type: "v2",
-        value: new THREE.Vector2(window.innerWidth / 2, window.innerHeight / 2),
-      },
       radius: { type: "f", value: 500.0 },
       strength: { type: "f", value: 5.0 },
     },
