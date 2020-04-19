@@ -41,7 +41,7 @@ export const Swirl = () => {
     frag: swirl,
     uniforms: {
       radius: { type: "f", value: 500.0 },
-      strength: { type: "f", value: 5.0 },
+      angle: { type: "f", value: 5.0 },
     },
   });
   return div;
