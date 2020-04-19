@@ -6,6 +6,7 @@ import edgeSobel from "./shaders/frag/edgeSobel.frag";
 import blur from "./shaders/frag/blur.frag";
 import swirl from "./shaders/frag/swirl.frag";
 import pixelate from "./shaders/frag/pixelate.frag";
+import hexagon from "./shaders/frag/hexagon.frag";
 import posterize from "./shaders/frag/posterize.frag";
 import whitenoise from "./shaders/frag/whitenoise.frag";
 
@@ -72,6 +73,17 @@ export const Pixelate = () => {
     frag: pixelate,
     uniforms: {
       fMosaicScale: { type: "f", value: 10.0 },
+    },
+  });
+  return div;
+};
+
+export const Hexagon = () => {
+  const div = document.createElement("div");
+  init(div, {
+    frag: hexagon,
+    uniforms: {
+      size: { type: "f", value: 150.0 },
     },
   });
   return div;
