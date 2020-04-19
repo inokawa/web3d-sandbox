@@ -3,6 +3,7 @@ import monochrome from "./shaders/frag/monochrome.frag";
 import binarize from "./shaders/frag/binarize.frag";
 import invert from "./shaders/frag/invert.frag";
 import edgeSobel from "./shaders/frag/edgeSobel.frag";
+import blur from "./shaders/frag/blur.frag";
 import swirl from "./shaders/frag/swirl.frag";
 import pixelate from "./shaders/frag/pixelate.frag";
 import eightbit from "./shaders/frag/eightbit.frag";
@@ -39,6 +40,17 @@ export const Invert = () => {
 export const EdgeSobel = () => {
   const div = document.createElement("div");
   init(div, { frag: edgeSobel });
+  return div;
+};
+
+export const Blur = () => {
+  const div = document.createElement("div");
+  init(div, {
+    frag: blur,
+    uniforms: {
+      strength: { type: "f", value: 2.5 },
+    },
+  });
   return div;
 };
 
