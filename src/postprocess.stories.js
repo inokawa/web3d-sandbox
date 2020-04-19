@@ -72,7 +72,7 @@ export const Pixelate = () => {
   init(div, {
     frag: pixelate,
     uniforms: {
-      fMosaicScale: { type: "f", value: 10.0 },
+      size: { type: "f", value: 10.0 },
     },
   });
   return div;
