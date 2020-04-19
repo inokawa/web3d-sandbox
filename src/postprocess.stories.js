@@ -1,3 +1,4 @@
+import * as THREE from "three";
 import init from "./utils/threejs.js";
 import monochrome from "./shaders/frag/monochrome.frag";
 import binarize from "./shaders/frag/binarize.frag";
@@ -5,6 +6,7 @@ import invert from "./shaders/frag/invert.frag";
 import edgeSobel from "./shaders/frag/edgeSobel.frag";
 import blur from "./shaders/frag/blur.frag";
 import swirl from "./shaders/frag/swirl.frag";
+import godray from "./shaders/frag/godray.frag";
 import pixelate from "./shaders/frag/pixelate.frag";
 import hexagon from "./shaders/frag/hexagon.frag";
 import posterize from "./shaders/frag/posterize.frag";
@@ -62,6 +64,20 @@ export const Swirl = () => {
     uniforms: {
       radius: { type: "f", value: 500.0 },
       angle: { type: "f", value: 5.0 },
+    },
+  });
+  return div;
+};
+
+export const Godray = () => {
+  const div = document.createElement("div");
+  init(div, {
+    frag: godray,
+    uniforms: {
+      center: {
+        type: "v2",
+        value: new THREE.Vector2(0.25, 0.25),
+      },
     },
   });
   return div;
