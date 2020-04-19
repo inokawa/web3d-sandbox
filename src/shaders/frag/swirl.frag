@@ -9,15 +9,13 @@ void main() {
   vec2 center = resolution.xy / 2.0;
   vec2 pos = (vUv * resolution) - center;
   float len = length(pos);
-  if(len >= radius) {
-    gl_FragColor = texture2D(tDiffuse, vUv);
-    return;
+  if (len < radius) {
+    float swirl = (radius - len / radius) * strength;
+    float s = sin(swirl);
+    float c = cos(swirl);
+    pos = vec2(dot(pos, vec2(c, -s)), dot(pos, vec2(s, c)));
   }
-
-  float swirl = min(max(1.0 - (len / radius), 0.0), 1.0) * strength; 
-  float x = pos.x * cos(swirl) - pos.y * sin(swirl); 
-  float y = pos.x * sin(swirl) + pos.y * cos(swirl);
-  vec2 retPos = (vec2(x, y) + center) / resolution;
-  vec4 color = texture2D(tDiffuse, retPos);
+  pos += center;
+  vec4 color = texture2D(tDiffuse, pos / resolution);
   gl_FragColor = color;
 }
