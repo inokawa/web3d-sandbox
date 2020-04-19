@@ -6,7 +6,7 @@ uniform float radius;
 uniform float strength;
 
 void main() {
-  vec2 center = vec2(resolution.x / 2.0, resolution.y / 2.0);
+  vec2 center = resolution.xy / 2.0;
   vec2 pos = (vUv * resolution) - center;
   float len = length(pos);
   if(len >= radius) {
