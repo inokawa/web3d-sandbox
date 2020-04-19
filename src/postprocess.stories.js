@@ -2,6 +2,7 @@ import init from "./utils/threejs.js";
 import monochrome from "./shaders/frag/monochrome.frag";
 import binarize from "./shaders/frag/binarize.frag";
 import invert from "./shaders/frag/invert.frag";
+import edgeSobel from "./shaders/frag/edgeSobel.frag";
 import swirl from "./shaders/frag/swirl.frag";
 import pixelate from "./shaders/frag/pixelate.frag";
 import eightbit from "./shaders/frag/eightbit.frag";
@@ -32,6 +33,12 @@ export const Binarize = () => {
 export const Invert = () => {
   const div = document.createElement("div");
   init(div, { frag: invert });
+  return div;
+};
+
+export const EdgeSobel = () => {
+  const div = document.createElement("div");
+  init(div, { frag: edgeSobel });
   return div;
 };
 
