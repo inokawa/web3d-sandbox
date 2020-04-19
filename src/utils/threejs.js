@@ -51,7 +51,7 @@ function init(elem, { uniforms, frag, vert } = {}) {
   const composer = new EffectComposer(renderer);
   composer.addPass(new RenderPass(scene, camera));
 
-  const tempUniforms = {
+  const refUniforms = {
     tDiffuse: {
       value: null,
       type: "t",
@@ -68,7 +68,7 @@ function init(elem, { uniforms, frag, vert } = {}) {
   };
   const effect = new ShaderPass(
     new THREE.ShaderMaterial({
-      uniforms: tempUniforms,
+      uniforms: refUniforms,
       vertexShader: vert || defaultVert,
       fragmentShader: frag || defaultFrag,
     })
@@ -87,7 +87,7 @@ function init(elem, { uniforms, frag, vert } = {}) {
     mesh.rotation.y += 0.005;
 
     composer.render();
-    tempUniforms.time.value += 0.05;
+    refUniforms.time.value += 0.05;
   }
 }
 
