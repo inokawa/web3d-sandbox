@@ -1,7 +1,9 @@
+import * as THREE from "three";
 import init from "./utils/threejs.js";
 import monochrome from "./shaders/frag/monochrome.frag";
 import binarize from "./shaders/frag/binarize.frag";
 import invert from "./shaders/frag/invert.frag";
+import swirl from "./shaders/frag/swirl.frag";
 import pixelate from "./shaders/frag/pixelate.frag";
 import eightbit from "./shaders/frag/eightbit.frag";
 import whitenoise from "./shaders/frag/whitenoise.frag";
@@ -31,6 +33,22 @@ export const Binarize = () => {
 export const Invert = () => {
   const div = document.createElement("div");
   init(div, { frag: invert });
+  return div;
+};
+
+export const Swirl = () => {
+  const div = document.createElement("div");
+  init(div, {
+    frag: swirl,
+    uniforms: {
+      center: {
+        type: "v2",
+        value: new THREE.Vector2(window.innerWidth / 2, window.innerHeight / 2),
+      },
+      radius: { type: "f", value: 500.0 },
+      strength: { type: "f", value: 5.0 },
+    },
+  });
   return div;
 };
 
