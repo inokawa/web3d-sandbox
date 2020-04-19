@@ -7,7 +7,7 @@ import eightbit from "./shaders/frag/eightbit.frag";
 import whitenoise from "./shaders/frag/whitenoise.frag";
 
 export default {
-  title: "Shaders",
+  title: "Postprocess",
 };
 
 export const None = () => {
