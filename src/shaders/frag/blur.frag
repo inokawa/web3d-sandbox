@@ -22,7 +22,6 @@ void main(void) {
   vec4 n[9];
   make_kernel(n, tDiffuse, vUv.xy);
 
-  vec4 color = texture2D(tDiffuse, vUv);
   vec4 sum = (1.0 * n[0] + 2.0 * n[1] + 1.0 * n[2] + 2.0 * n[3] + 4.0 * n[4] + 2.0 * n[5] + 1.0 * n[6] + 2.0 * n[7] + 1.0 * n[8]) / 16.0;
   gl_FragColor = vec4(sum.rgb, 1.0);
 }
