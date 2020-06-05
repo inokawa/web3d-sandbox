@@ -9,6 +9,7 @@ import swirl from "./shaders/frag/swirl.frag";
 import godray from "./shaders/frag/godray.frag";
 import pixelate from "./shaders/frag/pixelate.frag";
 import hexagon from "./shaders/frag/hexagon.frag";
+import lineshade from "./shaders/frag/lineshade.frag";
 import posterize from "./shaders/frag/posterize.frag";
 import whitenoise from "./shaders/frag/whitenoise.frag";
 
@@ -100,6 +101,17 @@ export const Hexagon = () => {
     frag: hexagon,
     uniforms: {
       size: { type: "f", value: 150.0 },
+    },
+  });
+  return div;
+};
+
+export const Lineshade = () => {
+  const div = document.createElement("div");
+  init(div, {
+    frag: lineshade,
+    uniforms: {
+      lineScale: { type: "f", value: 0.5 },
     },
   });
   return div;
