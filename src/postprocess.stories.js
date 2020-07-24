@@ -8,6 +8,7 @@ import blur from "./shaders/frag/blur.frag";
 import swirl from "./shaders/frag/swirl.frag";
 import godray from "./shaders/frag/godray.frag";
 import pixelate from "./shaders/frag/pixelate.frag";
+import led from "./shaders/frag/led.frag";
 import hexagon from "./shaders/frag/hexagon.frag";
 import lineshade from "./shaders/frag/lineshade.frag";
 import posterize from "./shaders/frag/posterize.frag";
@@ -90,6 +91,17 @@ export const Pixelate = () => {
     frag: pixelate,
     uniforms: {
       size: { type: "f", value: 10.0 },
+    },
+  });
+  return div;
+};
+
+export const Led = () => {
+  const div = document.createElement("div");
+  init(div, {
+    frag: led,
+    uniforms: {
+      size: { type: "f", value: 5.0 },
     },
   });
   return div;
