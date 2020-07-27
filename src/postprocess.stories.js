@@ -7,6 +7,7 @@ import edgeSobel from "./shaders/frag/edgeSobel.frag";
 import blur from "./shaders/frag/blur.frag";
 import swirl from "./shaders/frag/swirl.frag";
 import godray from "./shaders/frag/godray.frag";
+import dither from "./shaders/frag/dither.frag";
 import pixelate from "./shaders/frag/pixelate.frag";
 import led from "./shaders/frag/led.frag";
 import hexagon from "./shaders/frag/hexagon.frag";
@@ -82,6 +83,12 @@ export const Godray = () => {
       },
     },
   });
+  return div;
+};
+
+export const Dither = () => {
+  const div = document.createElement("div");
+  init(div, { frag: dither });
   return div;
 };
 
