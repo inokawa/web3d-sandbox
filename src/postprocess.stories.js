@@ -5,6 +5,7 @@ import binarize from "./shaders/frag/binarize.frag";
 import invert from "./shaders/frag/invert.frag";
 import edgeSobel from "./shaders/frag/edgeSobel.frag";
 import blur from "./shaders/frag/blur.frag";
+import water from "./shaders/frag/water.frag";
 import swirl from "./shaders/frag/swirl.frag";
 import godray from "./shaders/frag/godray.frag";
 import dither from "./shaders/frag/dither.frag";
@@ -57,6 +58,12 @@ export const Blur = () => {
       strength: { type: "f", value: 2.5 },
     },
   });
+  return div;
+};
+
+export const Water = () => {
+  const div = document.createElement("div");
+  init(div, { frag: water });
   return div;
 };
 
