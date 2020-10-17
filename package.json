@@ -7,7 +7,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "three": "0.120.1"
+    "three": "0.121.1"
   },
   "devDependencies": {
     "@babel/core": "7.12.3",
