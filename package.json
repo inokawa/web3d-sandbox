@@ -10,7 +10,7 @@
     "three": "0.123.0"
   },
   "devDependencies": {
-    "@babel/core": "7.12.3",
+    "@babel/core": "7.12.10",
     "@storybook/html": "6.1.15",
     "babel-loader": "8.2.2",
     "raw-loader": "4.0.2"
