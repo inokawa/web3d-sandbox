@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import React, { useRef, useLayoutEffect } from "react";
 import init from "./utils/threejs.js";
 import monochrome from "./shaders/frag/monochrome.frag";
 import binarize from "./shaders/frag/binarize.frag";
@@ -21,142 +22,174 @@ export default {
 };
 
 export const None = () => {
-  const div = document.createElement("div");
-  init(div);
-  return div;
+  const ref = useRef();
+  useLayoutEffect(() => {
+    init(ref.current);
+  }, []);
+  return <div ref={ref} />;
 };
 
 export const Monochrome = () => {
-  const div = document.createElement("div");
-  init(div, { frag: monochrome });
-  return div;
+  const ref = useRef();
+  useLayoutEffect(() => {
+    init(ref.current, { frag: monochrome });
+  }, []);
+  return <div ref={ref} />;
 };
 
 export const Binarize = () => {
-  const div = document.createElement("div");
-  init(div, { frag: binarize });
-  return div;
+  const ref = useRef();
+  useLayoutEffect(() => {
+    init(ref.current, { frag: binarize });
+  }, []);
+  return <div ref={ref} />;
 };
 
 export const Invert = () => {
-  const div = document.createElement("div");
-  init(div, { frag: invert });
-  return div;
+  const ref = useRef();
+  useLayoutEffect(() => {
+    init(ref.current, { frag: invert });
+  }, []);
+  return <div ref={ref} />;
 };
 
 export const EdgeSobel = () => {
-  const div = document.createElement("div");
-  init(div, { frag: edgeSobel });
-  return div;
+  const ref = useRef();
+  useLayoutEffect(() => {
+    init(ref.current, { frag: edgeSobel });
+  }, []);
+  return <div ref={ref} />;
 };
 
 export const Blur = () => {
-  const div = document.createElement("div");
-  init(div, {
-    frag: blur,
-    uniforms: {
-      strength: { type: "f", value: 2.5 },
-    },
-  });
-  return div;
+  const ref = useRef();
+  useLayoutEffect(() => {
+    init(ref.current, {
+      frag: blur,
+      uniforms: {
+        strength: { type: "f", value: 2.5 },
+      },
+    });
+  }, []);
+  return <div ref={ref} />;
 };
 
 export const Water = () => {
-  const div = document.createElement("div");
-  init(div, { frag: water });
-  return div;
+  const ref = useRef();
+  useLayoutEffect(() => {
+    init(ref.current, { frag: water });
+  }, []);
+  return <div ref={ref} />;
 };
 
 export const Swirl = () => {
-  const div = document.createElement("div");
-  init(div, {
-    frag: swirl,
-    uniforms: {
-      radius: { type: "f", value: 500.0 },
-      angle: { type: "f", value: 5.0 },
-    },
-  });
-  return div;
+  const ref = useRef();
+  useLayoutEffect(() => {
+    init(ref.current, {
+      frag: swirl,
+      uniforms: {
+        radius: { type: "f", value: 500.0 },
+        angle: { type: "f", value: 5.0 },
+      },
+    });
+  }, []);
+  return <div ref={ref} />;
 };
 
 export const Godray = () => {
-  const div = document.createElement("div");
-  init(div, {
-    frag: godray,
-    uniforms: {
-      center: {
-        type: "v2",
-        value: new THREE.Vector2(0.25, 0.25),
+  const ref = useRef();
+  useLayoutEffect(() => {
+    init(ref.current, {
+      frag: godray,
+      uniforms: {
+        center: {
+          type: "v2",
+          value: new THREE.Vector2(0.25, 0.25),
+        },
       },
-    },
-  });
-  return div;
+    });
+  }, []);
+  return <div ref={ref} />;
 };
 
 export const Dither = () => {
-  const div = document.createElement("div");
-  init(div, { frag: dither });
-  return div;
+  const ref = useRef();
+  useLayoutEffect(() => {
+    init(ref.current, { frag: dither });
+  }, []);
+  return <div ref={ref} />;
 };
 
 export const Pixelate = () => {
-  const div = document.createElement("div");
-  init(div, {
-    frag: pixelate,
-    uniforms: {
-      size: { type: "f", value: 10.0 },
-    },
-  });
-  return div;
+  const ref = useRef();
+  useLayoutEffect(() => {
+    init(ref.current, {
+      frag: pixelate,
+      uniforms: {
+        size: { type: "f", value: 10.0 },
+      },
+    });
+  }, []);
+  return <div ref={ref} />;
 };
 
 export const Led = () => {
-  const div = document.createElement("div");
-  init(div, {
-    frag: led,
-    uniforms: {
-      size: { type: "f", value: 5.0 },
-    },
-  });
-  return div;
+  const ref = useRef();
+  useLayoutEffect(() => {
+    init(ref.current, {
+      frag: led,
+      uniforms: {
+        size: { type: "f", value: 5.0 },
+      },
+    });
+  }, []);
+  return <div ref={ref} />;
 };
 
 export const Hexagon = () => {
-  const div = document.createElement("div");
-  init(div, {
-    frag: hexagon,
-    uniforms: {
-      size: { type: "f", value: 150.0 },
-    },
-  });
-  return div;
+  const ref = useRef();
+  useLayoutEffect(() => {
+    init(ref.current, {
+      frag: hexagon,
+      uniforms: {
+        size: { type: "f", value: 150.0 },
+      },
+    });
+  }, []);
+  return <div ref={ref} />;
 };
 
 export const Lineshade = () => {
-  const div = document.createElement("div");
-  init(div, {
-    frag: lineshade,
-    uniforms: {
-      lineScale: { type: "f", value: 0.5 },
-    },
-  });
-  return div;
+  const ref = useRef();
+  useLayoutEffect(() => {
+    init(ref.current, {
+      frag: lineshade,
+      uniforms: {
+        lineScale: { type: "f", value: 0.5 },
+      },
+    });
+  }, []);
+  return <div ref={ref} />;
 };
 
 export const Posterize = () => {
-  const div = document.createElement("div");
-  init(div, {
-    frag: posterize,
-    uniforms: {
-      gamma: { type: "f", value: 0.6 },
-      numColors: { type: "f", value: 8.0 },
-    },
-  });
-  return div;
+  const ref = useRef();
+  useLayoutEffect(() => {
+    init(ref.current, {
+      frag: posterize,
+      uniforms: {
+        gamma: { type: "f", value: 0.6 },
+        numColors: { type: "f", value: 8.0 },
+      },
+    });
+  }, []);
+  return <div ref={ref} />;
 };
 
 export const Whitenoise = () => {
-  const div = document.createElement("div");
-  init(div, { frag: whitenoise });
-  return div;
+  const ref = useRef();
+  useLayoutEffect(() => {
+    init(ref.current, { frag: whitenoise });
+  }, []);
+  return <div ref={ref} />;
 };

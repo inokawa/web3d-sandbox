@@ -7,11 +7,13 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "three": "0.128.0"
   },
   "devDependencies": {
     "@babel/core": "7.13.16",
-    "@storybook/html": "6.1.21",
+    "@storybook/react": "^6.2.9",
     "babel-loader": "8.2.2",
     "raw-loader": "4.0.2"
   }
