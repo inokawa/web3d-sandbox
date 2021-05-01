@@ -9,6 +9,7 @@ import blur from "./shaders/frag/blur.frag";
 import water from "./shaders/frag/water.frag";
 import swirl from "./shaders/frag/swirl.frag";
 import godray from "./shaders/frag/godray.frag";
+import ascii from "./shaders/frag/ascii.frag";
 import dither from "./shaders/frag/dither.frag";
 import pixelate from "./shaders/frag/pixelate.frag";
 import led from "./shaders/frag/led.frag";
@@ -132,6 +133,18 @@ export const Godray = () => {
         },
       },
     });
+    return () => {
+      dispose();
+    };
+  }, []);
+  return <div ref={ref} />;
+};
+
+// https://www.shadertoy.com/view/lssGDj
+export const Ascii = () => {
+  const ref = useRef();
+  useLayoutEffect(() => {
+    const dispose = init(ref.current, { frag: ascii });
     return () => {
       dispose();
     };
