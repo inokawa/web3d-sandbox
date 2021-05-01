@@ -66,21 +66,22 @@ function init(elem, { uniforms, frag, vert } = {}) {
     },
     ...uniforms,
   };
-  const effect = new ShaderPass(
-    new THREE.ShaderMaterial({
-      uniforms: refUniforms,
-      vertexShader: vert || defaultVert,
-      fragmentShader: frag || defaultFrag,
-    })
-  );
+  const shader = new THREE.ShaderMaterial({
+    uniforms: refUniforms,
+    vertexShader: vert || defaultVert,
+    fragmentShader: frag || defaultFrag,
+  });
+  const effect = new ShaderPass(shader);
   composer.addPass(effect);
 
   // render
   elem.appendChild(renderer.domElement);
 
+  let end = false;
   animate();
 
   function animate() {
+    if (end) return;
     requestAnimationFrame(animate);
 
     mesh.rotation.x += 0.0025;
@@ -89,6 +90,22 @@ function init(elem, { uniforms, frag, vert } = {}) {
     composer.render();
     refUniforms.time.value += 0.05;
   }
+
+  function dispose(obj) {
+    obj.geometry && obj.geometry.dispose();
+    obj.material && obj.material.dispose();
+    obj.children.forEach((o) => {
+      dispose(o);
+    });
+    obj.dispose();
+  }
+
+  return () => {
+    end = true;
+    shader.dispose();
+    scene.remove(mesh);
+    dispose(mesh);
+  };
 }
 
 export default init;

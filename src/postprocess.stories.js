@@ -24,7 +24,10 @@ export default {
 export const None = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    init(ref.current);
+    const dispose = init(ref.current);
+    return () => {
+      dispose();
+    };
   }, []);
   return <div ref={ref} />;
 };
@@ -32,7 +35,10 @@ export const None = () => {
 export const Monochrome = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    init(ref.current, { frag: monochrome });
+    const dispose = init(ref.current, { frag: monochrome });
+    return () => {
+      dispose();
+    };
   }, []);
   return <div ref={ref} />;
 };
@@ -40,7 +46,10 @@ export const Monochrome = () => {
 export const Binarize = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    init(ref.current, { frag: binarize });
+    const dispose = init(ref.current, { frag: binarize });
+    return () => {
+      dispose();
+    };
   }, []);
   return <div ref={ref} />;
 };
@@ -48,7 +57,10 @@ export const Binarize = () => {
 export const Invert = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    init(ref.current, { frag: invert });
+    const dispose = init(ref.current, { frag: invert });
+    return () => {
+      dispose();
+    };
   }, []);
   return <div ref={ref} />;
 };
@@ -56,7 +68,10 @@ export const Invert = () => {
 export const EdgeSobel = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    init(ref.current, { frag: edgeSobel });
+    const dispose = init(ref.current, { frag: edgeSobel });
+    return () => {
+      dispose();
+    };
   }, []);
   return <div ref={ref} />;
 };
@@ -64,12 +79,15 @@ export const EdgeSobel = () => {
 export const Blur = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    init(ref.current, {
+    const dispose = init(ref.current, {
       frag: blur,
       uniforms: {
         strength: { type: "f", value: 2.5 },
       },
     });
+    return () => {
+      dispose();
+    };
   }, []);
   return <div ref={ref} />;
 };
@@ -77,7 +95,10 @@ export const Blur = () => {
 export const Water = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    init(ref.current, { frag: water });
+    const dispose = init(ref.current, { frag: water });
+    return () => {
+      dispose();
+    };
   }, []);
   return <div ref={ref} />;
 };
@@ -85,13 +106,16 @@ export const Water = () => {
 export const Swirl = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    init(ref.current, {
+    const dispose = init(ref.current, {
       frag: swirl,
       uniforms: {
         radius: { type: "f", value: 500.0 },
         angle: { type: "f", value: 5.0 },
       },
     });
+    return () => {
+      dispose();
+    };
   }, []);
   return <div ref={ref} />;
 };
@@ -99,7 +123,7 @@ export const Swirl = () => {
 export const Godray = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    init(ref.current, {
+    const dispose = init(ref.current, {
       frag: godray,
       uniforms: {
         center: {
@@ -108,6 +132,9 @@ export const Godray = () => {
         },
       },
     });
+    return () => {
+      dispose();
+    };
   }, []);
   return <div ref={ref} />;
 };
@@ -115,7 +142,10 @@ export const Godray = () => {
 export const Dither = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    init(ref.current, { frag: dither });
+    const dispose = init(ref.current, { frag: dither });
+    return () => {
+      dispose();
+    };
   }, []);
   return <div ref={ref} />;
 };
@@ -123,12 +153,15 @@ export const Dither = () => {
 export const Pixelate = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    init(ref.current, {
+    const dispose = init(ref.current, {
       frag: pixelate,
       uniforms: {
         size: { type: "f", value: 10.0 },
       },
     });
+    return () => {
+      dispose();
+    };
   }, []);
   return <div ref={ref} />;
 };
@@ -136,12 +169,15 @@ export const Pixelate = () => {
 export const Led = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    init(ref.current, {
+    const dispose = init(ref.current, {
       frag: led,
       uniforms: {
         size: { type: "f", value: 5.0 },
       },
     });
+    return () => {
+      dispose();
+    };
   }, []);
   return <div ref={ref} />;
 };
@@ -149,12 +185,15 @@ export const Led = () => {
 export const Hexagon = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    init(ref.current, {
+    const dispose = init(ref.current, {
       frag: hexagon,
       uniforms: {
         size: { type: "f", value: 150.0 },
       },
     });
+    return () => {
+      dispose();
+    };
   }, []);
   return <div ref={ref} />;
 };
@@ -162,12 +201,15 @@ export const Hexagon = () => {
 export const Lineshade = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    init(ref.current, {
+    const dispose = init(ref.current, {
       frag: lineshade,
       uniforms: {
         lineScale: { type: "f", value: 0.5 },
       },
     });
+    return () => {
+      dispose();
+    };
   }, []);
   return <div ref={ref} />;
 };
@@ -175,13 +217,16 @@ export const Lineshade = () => {
 export const Posterize = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    init(ref.current, {
+    const dispose = init(ref.current, {
       frag: posterize,
       uniforms: {
         gamma: { type: "f", value: 0.6 },
         numColors: { type: "f", value: 8.0 },
       },
     });
+    return () => {
+      dispose();
+    };
   }, []);
   return <div ref={ref} />;
 };
@@ -189,7 +234,10 @@ export const Posterize = () => {
 export const Whitenoise = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    init(ref.current, { frag: whitenoise });
+    const dispose = init(ref.current, { frag: whitenoise });
+    return () => {
+      dispose();
+    };
   }, []);
   return <div ref={ref} />;
 };
