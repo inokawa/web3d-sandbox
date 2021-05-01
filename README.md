@@ -1,8 +1,8 @@
-# glsl-sandbox
+# three-sandbox
 
-![deploy](https://github.com/inokawa/glsl-sandbox/workflows/deploy/badge.svg?branch=master)
+![deploy](https://github.com/inokawa/three-sandbox/workflows/deploy/badge.svg?branch=master)
 
-GLSL Practice
+Three.js/GLSL Practice
 
 ## Start
 
@@ -13,4 +13,4 @@ npm run storybook
 
 ## Demo
 
-https://inokawa.github.io/glsl-sandbox/
+https://inokawa.github.io/three-sandbox/
