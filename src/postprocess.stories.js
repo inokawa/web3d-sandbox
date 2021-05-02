@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import React, { useRef, useLayoutEffect } from "react";
-import init from "./utils/threejs.js";
+import { initPostprocess } from "./utils/threejs.js";
 import monochrome from "./shaders/frag/monochrome.frag";
 import binarize from "./shaders/frag/binarize.frag";
 import invert from "./shaders/frag/invert.frag";
@@ -25,7 +25,7 @@ export default {
 export const None = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current);
+    const dispose = initPostprocess(ref.current);
     return () => {
       dispose();
     };
@@ -36,7 +36,7 @@ export const None = () => {
 export const Monochrome = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current, { frag: monochrome });
+    const dispose = initPostprocess(ref.current, { frag: monochrome });
     return () => {
       dispose();
     };
@@ -47,7 +47,7 @@ export const Monochrome = () => {
 export const Binarize = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current, { frag: binarize });
+    const dispose = initPostprocess(ref.current, { frag: binarize });
     return () => {
       dispose();
     };
@@ -58,7 +58,7 @@ export const Binarize = () => {
 export const Invert = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current, { frag: invert });
+    const dispose = initPostprocess(ref.current, { frag: invert });
     return () => {
       dispose();
     };
@@ -69,7 +69,7 @@ export const Invert = () => {
 export const EdgeSobel = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current, { frag: edgeSobel });
+    const dispose = initPostprocess(ref.current, { frag: edgeSobel });
     return () => {
       dispose();
     };
@@ -80,7 +80,7 @@ export const EdgeSobel = () => {
 export const Blur = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current, {
+    const dispose = initPostprocess(ref.current, {
       frag: blur,
       uniforms: {
         strength: { type: "f", value: 2.5 },
@@ -96,7 +96,7 @@ export const Blur = () => {
 export const Water = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current, { frag: water });
+    const dispose = initPostprocess(ref.current, { frag: water });
     return () => {
       dispose();
     };
@@ -107,7 +107,7 @@ export const Water = () => {
 export const Swirl = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current, {
+    const dispose = initPostprocess(ref.current, {
       frag: swirl,
       uniforms: {
         radius: { type: "f", value: 500.0 },
@@ -124,7 +124,7 @@ export const Swirl = () => {
 export const Godray = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current, {
+    const dispose = initPostprocess(ref.current, {
       frag: godray,
       uniforms: {
         center: {
@@ -144,7 +144,7 @@ export const Godray = () => {
 export const Ascii = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current, { frag: ascii });
+    const dispose = initPostprocess(ref.current, { frag: ascii });
     return () => {
       dispose();
     };
@@ -155,7 +155,7 @@ export const Ascii = () => {
 export const Dither = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current, { frag: dither });
+    const dispose = initPostprocess(ref.current, { frag: dither });
     return () => {
       dispose();
     };
@@ -166,7 +166,7 @@ export const Dither = () => {
 export const Pixelate = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current, {
+    const dispose = initPostprocess(ref.current, {
       frag: pixelate,
       uniforms: {
         size: { type: "f", value: 10.0 },
@@ -182,7 +182,7 @@ export const Pixelate = () => {
 export const Led = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current, {
+    const dispose = initPostprocess(ref.current, {
       frag: led,
       uniforms: {
         size: { type: "f", value: 5.0 },
@@ -198,7 +198,7 @@ export const Led = () => {
 export const Hexagon = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current, {
+    const dispose = initPostprocess(ref.current, {
       frag: hexagon,
       uniforms: {
         size: { type: "f", value: 150.0 },
@@ -214,7 +214,7 @@ export const Hexagon = () => {
 export const Lineshade = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current, {
+    const dispose = initPostprocess(ref.current, {
       frag: lineshade,
       uniforms: {
         lineScale: { type: "f", value: 0.5 },
@@ -230,7 +230,7 @@ export const Lineshade = () => {
 export const Posterize = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current, {
+    const dispose = initPostprocess(ref.current, {
       frag: posterize,
       uniforms: {
         gamma: { type: "f", value: 0.6 },
@@ -247,7 +247,7 @@ export const Posterize = () => {
 export const Whitenoise = () => {
   const ref = useRef();
   useLayoutEffect(() => {
-    const dispose = init(ref.current, { frag: whitenoise });
+    const dispose = initPostprocess(ref.current, { frag: whitenoise });
     return () => {
       dispose();
     };

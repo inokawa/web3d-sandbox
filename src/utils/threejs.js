@@ -30,7 +30,7 @@ const createManyMesh = () => {
   return object;
 };
 
-function init(elem, { uniforms, frag, vert } = {}) {
+export function initPostprocess(elem, { uniforms, frag, vert } = {}) {
   const camera = new THREE.PerspectiveCamera(
     70,
     window.innerWidth / window.innerHeight,
@@ -91,15 +91,6 @@ function init(elem, { uniforms, frag, vert } = {}) {
     refUniforms.time.value += 0.05;
   }
 
-  function dispose(obj) {
-    obj.geometry && obj.geometry.dispose();
-    obj.material && obj.material.dispose();
-    obj.children.forEach((o) => {
-      dispose(o);
-    });
-    obj.dispose();
-  }
-
   return () => {
     end = true;
     shader.dispose();
@@ -108,4 +99,11 @@ function init(elem, { uniforms, frag, vert } = {}) {
   };
 }
 
-export default init;
+export function dispose(obj) {
+  obj.geometry && obj.geometry.dispose();
+  obj.material && obj.material.dispose();
+  obj.children.forEach((o) => {
+    dispose(o);
+  });
+  obj.dispose();
+}
