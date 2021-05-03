@@ -30,6 +30,39 @@ const createManyMesh = () => {
   return object;
 };
 
+export function init(elem, mesh, render) {
+  const camera = new THREE.PerspectiveCamera(
+    45,
+    window.innerWidth / window.innerHeight
+  );
+  camera.position.z = 10;
+
+  const renderer = new THREE.WebGLRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+
+  const scene = new THREE.Scene();
+
+  scene.add(mesh);
+
+  elem.appendChild(renderer.domElement);
+
+  let end = false;
+  (function animate() {
+    if (end) return;
+    requestAnimationFrame(animate);
+    render(() => {
+      renderer.render(scene, camera);
+    });
+  })();
+
+  return () => {
+    end = true;
+    scene.remove(mesh);
+    dispose(mesh);
+  };
+}
+
 export function initPostprocess(elem, { uniforms, frag, vert } = {}) {
   const camera = new THREE.PerspectiveCamera(
     70,
