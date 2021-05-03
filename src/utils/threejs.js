@@ -78,9 +78,7 @@ export function initPostprocess(elem, { uniforms, frag, vert } = {}) {
   elem.appendChild(renderer.domElement);
 
   let end = false;
-  animate();
-
-  function animate() {
+  (function animate() {
     if (end) return;
     requestAnimationFrame(animate);
 
@@ -89,7 +87,7 @@ export function initPostprocess(elem, { uniforms, frag, vert } = {}) {
 
     composer.render();
     refUniforms.time.value += 0.05;
-  }
+  })();
 
   return () => {
     end = true;
