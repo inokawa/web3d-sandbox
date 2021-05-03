@@ -31,12 +31,12 @@ const createManyMesh = () => {
   return object;
 };
 
-export function init(elem, mesh, render) {
+export function init(elem, mesh, z, render) {
   const camera = new THREE.PerspectiveCamera(
     45,
     window.innerWidth / window.innerHeight
   );
-  camera.position.z = 10;
+  camera.position.z = z;
 
   const renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);

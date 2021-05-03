@@ -19,7 +19,7 @@ export const DynamicGeometry = () => {
       new THREE.MeshNormalMaterial()
     );
 
-    const dispose = init(ref.current, sphere, (render) => {
+    const dispose = init(ref.current, sphere, 10, (render) => {
       const time = performance.now() * 0.001;
 
       const positions = sphere.geometry.attributes.position.array;
@@ -38,6 +38,67 @@ export const DynamicGeometry = () => {
       }
       sphere.geometry.attributes.position.needsUpdate = true;
       sphere.geometry.computeVertexNormals();
+      render();
+    });
+    return () => {
+      dispose();
+    };
+  }, []);
+  return <div ref={ref} />;
+};
+
+// https://steemit.com/utopian-io/@clayjohn/learning-3d-graphics-with-three-js-or-procedural-geometry
+export const ProceduralGeometry = () => {
+  const ref = useRef();
+  useLayoutEffect(() => {
+    const noise = new Noise(Math.random());
+
+    const geometry = new THREE.BufferGeometry();
+
+    const size = 10;
+    const res = 100;
+
+    const vertices = [];
+    const indices = [];
+
+    const makeQuad = (verts) => {
+      const index1 = vertices.length / 3 - 1;
+      const index2 = index1 - 1;
+      const index3 = index1 - verts;
+      const index4 = index1 - verts - 1;
+      indices.push(index2, index3, index1);
+      indices.push(index2, index4, index3);
+    };
+
+    for (let i = 0; i <= res; i++) {
+      for (let j = 0; j <= res; j++) {
+        const z = j * size;
+        const x = i * size;
+        const addFace = i > 0 && j > 0;
+        vertices.push(
+          i * size + (Math.random() - 0.5) * size,
+          noise.perlin3(x, z, 0.3) * size,
+          j * size + (Math.random() - 0.5) * size
+        );
+        if (addFace) {
+          makeQuad(res + 1);
+        }
+      }
+    }
+
+    geometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(new Float32Array(vertices), 3)
+    );
+    geometry.setIndex(indices);
+    const mesh = new THREE.Mesh(
+      geometry,
+      new THREE.MeshBasicMaterial({ color: "white", wireframe: true })
+    );
+
+    const dispose = init(ref.current, mesh, 1000, (render) => {
+      // mesh.geometry.computeFaceNormals();
+      // mesh.geometry.normalsNeedUpdate = true;
       render();
     });
     return () => {
