@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
@@ -42,8 +43,9 @@ export function init(elem, mesh, render) {
   renderer.setPixelRatio(window.devicePixelRatio);
 
   const scene = new THREE.Scene();
-
   scene.add(mesh);
+
+  const controls = new OrbitControls(camera, renderer.domElement);
 
   elem.appendChild(renderer.domElement);
 
