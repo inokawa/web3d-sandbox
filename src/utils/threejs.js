@@ -105,5 +105,4 @@ export function dispose(obj) {
   obj.children.forEach((o) => {
     dispose(o);
   });
-  obj.dispose();
 }
