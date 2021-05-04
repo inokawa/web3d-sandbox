@@ -19,7 +19,13 @@ export const DynamicGeometry = () => {
       new THREE.MeshNormalMaterial()
     );
 
-    const dispose = init(ref.current, sphere, 10, (render) => {
+    const camera = new THREE.PerspectiveCamera(
+      45,
+      window.innerWidth / window.innerHeight
+    );
+    camera.position.z = 10;
+
+    const dispose = init(ref.current, sphere, camera, (render) => {
       const time = performance.now() * 0.001;
 
       const positions = sphere.geometry.attributes.position.array;
@@ -96,7 +102,14 @@ export const ProceduralGeometry = () => {
       new THREE.MeshBasicMaterial({ color: "white", wireframe: true })
     );
 
-    const dispose = init(ref.current, mesh, 1000, (render) => {
+    const camera = new THREE.PerspectiveCamera(
+      45,
+      window.innerWidth / window.innerHeight
+    );
+    camera.position.x = 1000;
+    camera.position.z = 1000;
+
+    const dispose = init(ref.current, mesh, camera, (render) => {
       // mesh.geometry.computeFaceNormals();
       // mesh.geometry.normalsNeedUpdate = true;
       render();
