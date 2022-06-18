@@ -13,9 +13,9 @@
     "three": "0.128.0"
   },
   "devDependencies": {
-    "@babel/core": "7.14.0",
+    "@babel/core": "7.18.5",
     "@storybook/react": "6.2.9",
-    "babel-loader": "8.2.2",
+    "babel-loader": "8.2.5",
     "raw-loader": "4.0.2"
   }
 }
