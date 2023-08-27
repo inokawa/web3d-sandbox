@@ -1,8 +1,8 @@
-# three-sandbox
+# web3d-sandbox
 
-![deploy](https://github.com/inokawa/three-sandbox/workflows/deploy/badge.svg?branch=master)
+![deploy](https://github.com/inokawa/web3d-sandbox/workflows/deploy/badge.svg?branch=master)
 
-Three.js/GLSL Practice
+WebGL/WebGPU/GLSL Practice
 
 ## Start
 
@@ -13,4 +13,4 @@ npm run storybook
 
 ## Demo
 
-https://inokawa.github.io/three-sandbox/
+https://inokawa.github.io/web3d-sandbox/
