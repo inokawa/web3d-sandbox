@@ -1,4 +1,5 @@
-module.exports = {
+export default {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [],
+  framework: "@storybook/react-webpack5",
 };

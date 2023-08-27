@@ -1,7 +1,7 @@
-module.exports = async ({ config, mode }) => {
+export default async ({ config, mode }) => {
   config.module.rules.push({
     test: /\.(glsl|vs|fs|vert|frag)$/,
-    use: ['raw-loader'],
+    type: "asset/source",
   });
 
   return config;
